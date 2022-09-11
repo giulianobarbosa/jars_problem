@@ -1,7 +1,7 @@
 from itertools import permutations
 
-class Graph:
 
+class Graph:
 
     def __init__(self, inicial_state:list, final_state:list, jars_len:list) -> None:
         
@@ -11,7 +11,6 @@ class Graph:
         self.actual_state = [inicial_state]
         self.closed_states = []
         self.last_states = [inicial_state]
-        self.last_states_2 = [inicial_state]
         self.token = False
 
 
@@ -29,7 +28,7 @@ class Graph:
     # Untill jar_out is 0
     def drain_jar_out(self, state:list, indexes:tuple) -> None:
 
-        state_ = []
+        state_ = [] 
         state_ = [s for s in state]
         
         if (state_[indexes[0]] + state_[indexes[1]] <= self.jars_len[indexes[0]]) and (not(self.is_jar_empty(state_[indexes[1]]))):
