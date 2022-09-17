@@ -90,6 +90,10 @@ class Graph:
 
                     self.fill_all_jar(state, c)
                     self.drain_jar_out(state, c)
+                
+                if self.actual_state == []:
+                    print("Impossivel")
+                    exit()
 
             self.last_states = self.actual_state
             self.actual_state = []
@@ -116,4 +120,9 @@ if __name__ == "__main__":
     final_state_n = [0, 10, 19]
     jars_len_n = [29, 11, 20]
 
-    Graph(initial_state_n, final_state_n, jars_len_n).get_next_states()
+    initial_state_impossible = [10, 10, 10]
+    final_state_impossible = [0, 0, 0]
+    jars_len_impossible = [10, 10, 10]
+
+    # Graph(initial_state_n, final_state_n, jars_len_n).get_next_states()
+    Graph(initial_state_impossible, final_state_impossible, jars_len_impossible).get_next_states()
