@@ -38,8 +38,7 @@ class Graph:
 
             if state_ == self.final_state:   
 
-                print("ROLOU")
-                exit()
+                return True
 
             if state_ not in self.closed_states:
                 
@@ -64,8 +63,7 @@ class Graph:
 
             if state_ == self.final_state:   
 
-                print("ROLOU")
-                exit()
+                return True
 
             if state_ not in self.closed_states:
                 
@@ -88,14 +86,19 @@ class Graph:
 
                 for c in comb:
 
-                    self.fill_all_jar(state, c)
-                    self.drain_jar_out(state, c)
+                    if self.fill_all_jar(state, c):
+                        self.token = True
+                        break
+                    if self.drain_jar_out(state, c):
+                        self.token = True
+                        break
                 
-                if self.actual_state == []:
-                    print("Impossivel")
-                    exit()
+            if self.actual_state == []:
+                print("Impossivel")
+                break
 
             self.last_states = self.actual_state
             self.actual_state = []
+            if self.token == True:
+                print(f"Terminou com {i}")
             i+=1
-            print(i)
